@@ -6,7 +6,7 @@ from typing import Any, Dict
 
 import pandas as pd
 
-from src.models.classifier import Classifier
+from src.models.regressor import Regressor
 
 PROJECT_DIR = os.path.abspath(
     os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
@@ -93,11 +93,11 @@ class AssignmentStore(Store):
         filepath = os.path.join(self.processed_data_dir, filepath)
         self.put_csv(filepath, df, **kwargs)
 
-    def get_model(self, filepath: str) -> Classifier:
+    def get_model(self, filepath: str) -> Regressor:
         filepath = os.path.join(self.model_dir, filepath)
         return self.get_pkl(filepath)
 
-    def put_model(self, filepath: str, model: Classifier) -> None:
+    def put_model(self, filepath: str, model: Regressor) -> None:
         filepath = os.path.join(self.model_dir, filepath)
         self.put_pkl(filepath, model)
 
